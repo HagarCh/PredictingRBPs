@@ -45,7 +45,7 @@ def calculate_padding(sequences, maxLength):
     occurences = [x / float(nucleotides) for x in Letters_occurences]
     pad_sequences = []
     for seq in sequences:
-        pad_sequences.append(Padding(occurences, seq, maxLength))
+        pad_sequences.append(padding(occurences, seq, maxLength))
     return pad_sequences
 
 
@@ -56,4 +56,5 @@ def padding(occurences, sequence, maxLength):
     padSequence1 = ''.join([str(elem) for elem in pad1])
     padSequence2 = ''.join([str(elem) for elem in pad2])
     return padSequence1 + sequence + padSequence2
+
 
