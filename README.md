@@ -1,9 +1,24 @@
-# Predicting RNAcompete binding from RNA bind-n-seq data
-**Introduction**
-RNA-binding proteins (RBPs) play a significant role in various cellular processes, including mRNA splicing, transport, stability, and translation, making them essential for proper cellular functioning. Deciphering the RNA-binding preferences of RBPs is crucial for understanding the intricate regulatory networks that govern cellular processes at the molecular level. For measuring RNA binding preferences, we used data from two different technologies: RNA Bind-n-Seq and RNAcompete. For each RBP we implemented a deep learning model and use it to score RNAcompete probes to find the RNA binding preferences. In this project we aim to assign binding intensities to RNAcompete probes. We achieved this by implement an aggregation function over the
-model probability to produce a single binding score.
+# Predicting RNAcompete Binding from RNA Bind-n-Seq Data
 
-**Model architecture:**
-We developed a model to predict the RNA binding preferences from RNA bind-n-seq data. Our model based on a convolutional neural network (CNN) comprised of 1D-convolution layer with 128 convolutional kernels (width 6, stride 1), a max pooling layer (pool size 2, stride 2), a fully connected layer with 64 nodes (ReLU activation), and an output layer with 4 nodes (softmax activation).  The input is a one-hot encoding of size of the maximum sequence length of RNAcompete or RNA Bind-n-Seq sequences. The labels are corresponded to the different concentrations. The input file was labeled as 0, concentrations that smaller than 100nM ware labeled as 1, concentrations between 100nM and 500nM were labeled as 2 and concentrations above 500nM was labeled as 3. Model parameters were learned by Adam optimizer, employing a learning rate decay of approximately 0.009. This decay was executed at intervals of 5000 steps, with a decay rate of 0.9. For the optimization process, the categorical cross-entropy loss function was employed.
+**Introduction**  
+RNA-binding proteins (RBPs) play key roles in essential cellular processes such as mRNA splicing, transport, stability, and translation. Understanding their binding preferences is crucial for deciphering the regulatory networks that operate at the molecular level.  
+
+To study these preferences, we use data from two experimental technologies: **RNA Bind-n-Seq (RBNS)** and **RNAcompete**. For each RBP, we train a deep learning model on RBNS data and apply it to score RNAcompete probes. Our goal is to assign binding intensities to RNAcompete sequences. We achieve this by aggregating the model’s predicted probabilities into a single binding score per probe.
+
+**Model architecture:**  
+We developed a convolutional neural network (CNN) to predict binding preferences using RNA Bind-n-Seq data.  
+The model includes:  
+- A 1D convolutional layer with **128 kernels** (kernel size = 6, stride = 1)  
+- A max pooling layer with **pool size = 2** and **stride = 2**  
+- A fully connected layer with **64 units** and **ReLU** activation  
+- An output layer with **4 units** and **softmax** activation  
+
+The input consists of one-hot encoded sequences, padded to the maximum length observed in the RBNS or RNAcompete datasets. Labels correspond to concentration ranges:  
+- `0` — original input file label  
+- `1` — < 100 nM  
+- `2` — 100–500 nM  
+- `3` — > 500 nM  
+
+Training is performed with the **Adam** optimizer. We apply a learning-rate decay of approximately **0.009**, executed every **5000 steps** with a decay rate of **0.9**. The loss function used is **categorical cross-entropy**.
 
 <img width="424" height="156" alt="image" src="https://github.com/user-attachments/assets/a9b718bc-9462-401e-ad64-648de47efbd2" />
