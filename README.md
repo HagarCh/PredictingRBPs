@@ -21,4 +21,6 @@ The input consists of one-hot encoded sequences, padded to the maximum length ob
 
 Training is performed with the **Adam** optimizer. We apply a learning-rate decay of approximately **0.009**, executed every **5000 steps** with a decay rate of **0.9**. The loss function used is **categorical cross-entropy**.
 
-<img width="424" height="156" alt="image" src="https://github.com/user-attachments/assets/a9b718bc-9462-401e-ad64-648de47efbd2" />
+<div align="center">
+  <img width="424" height="156" src="https://github.com/user-attachments/assets/a9b718bc-9462-401e-ad64-648de47efbd2" alt="Model Diagram">
+</div>
