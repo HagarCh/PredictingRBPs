@@ -2,7 +2,7 @@ import sys
 from dataLoader import importData, splitData, importRNAcompete
 from helper import maxlen, calculate_padding
 import numpy as np
-from model import modeli
+from model import rbpModel
 from keras.utils import to_categorical
 
 
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     # model initialization
     best_parameters = {"filter_number": 128, "fc_size": 64, "kernel_size": 6, "lr": 0.009368509364907707,
                        "loss_function": 1, "activation_function": 0, "max_length": maxLength}
-    model = modeli(best_parameters)
+    model = rbpModel(best_parameters)
     # from categorical classes to one-hot encoded
     y_train_encoded = to_categorical(np.array(training_outputs), num_classes=4)
     y_valid_encoded = to_categorical(np.array(validation_outputs), num_classes=4)
@@ -59,5 +59,6 @@ if __name__ == '__main__':
               verbose=1, shuffle=True, callbacks=[callback])
     prediction_list = model.predict(sequences_test)
     evaluate(outputFile, prediction_list)
+
 
 
