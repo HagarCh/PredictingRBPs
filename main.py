@@ -1,8 +1,8 @@
 import sys
 from dataLoader import *
-from Helper import *
+from helper import maxLengthSequence, maxlen, oneHot, calculate_padding, padding
 import numpy as np
-from Model import *
+from model import modeli
 from keras.utils import to_categorical
 
 
@@ -59,3 +59,4 @@ if __name__ == '__main__':
               verbose=1, shuffle=True, callbacks=[callback])
     prediction_list = model.predict(sequences_test)
     evaluate(outputFile, prediction_list)
+
