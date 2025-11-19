@@ -4,7 +4,7 @@ from keras.models import Sequential
 from keras.optimizers import Adam
 
 #This is the architecture of the CNN model chosen for predicting RNA binding intensity
-def predictRBP(best_parameters):
+def rbpModel(best_parameters):
     # Those are the optional loss functions and activation function we wanted to test which one is better
     loss_functions = [tf.keras.losses.Poisson(), 'categorical_crossentropy']
     activation_functions = ['sigmoid', 'softmax']
@@ -25,4 +25,5 @@ def predictRBP(best_parameters):
     model.compile(loss=loss_functions[best_parameters["loss_function"]], optimizer=adam,
                 metrics=['accuracy', tf.keras.metrics.AUC(name='auc')])
     return model
+
 
