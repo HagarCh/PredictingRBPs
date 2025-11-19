@@ -1,2 +1,1 @@
-# PredictingRBPs
-Predicting RNAcompete binding from RNA bind-n-seq data
+# Predicting RNAcompete binding from RNA bind-n-seq data
