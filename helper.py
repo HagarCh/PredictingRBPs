@@ -50,9 +50,10 @@ def calculate_padding(sequences, maxLength):
 
 
 "Padding each sequence with length < maxLength. Padding from both sides- half to the right and half to the left"
-def Padding(occurences, sequence, maxLength):
+def padding(occurences, sequence, maxLength):
     pad1 = random.choices(['A', 'T', 'G', 'C'], weights=occurences, k=int(np.floor((maxLength - len(sequence)) / 2)))
     pad2 = random.choices(['A', 'T', 'G', 'C'], weights=occurences, k=int(np.ceil((maxLength - len(sequence)) / 2)))
     padSequence1 = ''.join([str(elem) for elem in pad1])
     padSequence2 = ''.join([str(elem) for elem in pad2])
     return padSequence1 + sequence + padSequence2
+
