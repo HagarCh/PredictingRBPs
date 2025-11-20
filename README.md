@@ -1,5 +1,4 @@
 # Predicting RNAcompete Binding from RNA Bind-n-Seq Data
-
 **Introduction**  
 RNA-binding proteins (RBPs) play key roles in essential cellular processes such as mRNA splicing, transport, stability, and translation. Understanding their binding preferences is crucial for deciphering the regulatory networks that operate at the molecular level.  
 
